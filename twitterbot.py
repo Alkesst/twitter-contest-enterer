@@ -1,4 +1,5 @@
-# This was a quick project. Inspired by a story I heard of on the news where a guy did something almost exactly the same
+# -*- coding: utf-8 -*-
+#  This was a quick project. Inspired by a story I heard of on the news where a guy did something almost exactly the same
 #  and won a bunch of stuff. I couldn't find the code that that guy used (I don't think he wanted to release it), so I
 # wrote this. Have fun.
 
@@ -33,7 +34,7 @@ def search(twts):
 	for i in twts:
 		if not any(k in i.text.lower() for k in keywords) or any(k in i.text.lower() for k in bannedwords):
 			continue
-		if is_user_bot_hunter(str(i.author.screen_name)) == False:
+		if is_user_bot_hunter(i.author.screen_name.encode('utf8')) == False:
 			if not i.retweeted:
 				try:
 					api.retweet(i.id)
